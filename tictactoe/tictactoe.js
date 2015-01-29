@@ -1,4 +1,4 @@
-/**
+/********************************************************************************
  * Tic Tac Toe
  * @license MIT
  * Copyright (c) 2015-2018 Bradyn Poulsen
@@ -20,34 +20,34 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */
+ *******************************************************************************/
 
 (function(){
-  var wins = [
-    // rows
-    ['square00', 'square10', 'square20'],
-    ['square01', 'square11', 'square21'],
-    ['square02', 'square12', 'square22'],
-    // columns
-    ['square00', 'square01', 'square02'],
-    ['square10', 'square11', 'square12'],
-    ['square20', 'square21', 'square22'],
-    // diagonals
-    ['square00', 'square11', 'square22'],
-    ['square02', 'square11', 'square20']
-  ];
-
   /**
    * TicTacToe
    * @class
    *
-   * @param {TicTacToe~gameOver`} done - Game over callback
+   * @param {TicTacToe~gameOver} done
    */
   var TicTacToe = function(done){
     /** @member {boolean} */
     this.active = true;
     /** @member {number} */
     this.turn = 0;
+    /** @member {string[][]} */
+    this.winningCombos = [
+      // rows
+      ['square00', 'square10', 'square20'],
+      ['square01', 'square11', 'square21'],
+      ['square02', 'square12', 'square22'],
+      // columns
+      ['square00', 'square01', 'square02'],
+      ['square10', 'square11', 'square12'],
+      ['square20', 'square21', 'square22'],
+      // diagonals
+      ['square00', 'square11', 'square22'],
+      ['square02', 'square11', 'square20']
+    ];
 
     /**
      * @method takeTurn
@@ -103,8 +103,8 @@
      */
     this.eachCombo = function(id, next){
       var i;
-      for(i = 0; i < wins.length; i++){
-        if(wins[i].indexOf(id) >= 0) next(wins[i]);
+      for(i = 0; i < this.winningCombos.length; i++){
+        if(this.winningCombos[i].indexOf(id) >= 0) next(this.winningCombos[i]);
       }
     };
 
