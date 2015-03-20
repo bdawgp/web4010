@@ -79,7 +79,8 @@
 				var option = _.find(this.categoryList.options, function(option){
 					return option.value === String(key);
 				});
-				if(option) option.text = name;
+				var newOption = this.renderCategoryOption(key);
+				if(option) this.categoryList.replaceChild(newOption, option);
 			}
 			this.persistCategoryNames();
 			return this.categories[key];
@@ -168,9 +169,10 @@
 				var thumbnail = _.find(this.container.getElementsByClassName(this.galleryId), function(link){
 					return link.href === this.baseUrl + picture[0];
 				}, this);
+				var newPicture = this.renderPicture(picture);
 				if(thumbnail){
-					thumbnail.getElementsByClassName('title')[0].innerText = name;
-					thumbnail.getElementsByClassName('photoGallery-thumb')[0].alt = name;
+					this.container.replaceChild(newPicture, thumbnail);
+					this.largePicture(picture, newPicture);
 				}
 			}
 			this.persistPictureNames();
@@ -254,7 +256,7 @@
 		/**
 		 * Render the dialog DOM template
 		 * @param  {string[]} picture
-		 * @return {HTMLElement}
+		 * @return {HTMLDivElement}
 		 */
 		renderDialog: function(picture, referer){
 			var content = Mustache.render(this.loadTemplate('modal'), {
@@ -321,18 +323,28 @@
 		},
 
 		/**
+		 * Render a specific category option
+		 * @param  {number} i
+		 * @return {HTMLOptionElement}
+		 */
+		renderCategoryOption: function(i){
+			var content = Mustache.render(this.loadTemplate('categoryList'), {
+				key: i,
+				name: this.getCategoryName(i),
+				selected: (this.pictureCategory === i ? ' selected="selected"' : '')
+			});
+
+			var element = jQuery(content)[0];
+			return element;
+		},
+
+		/**
 		 * Create a category list select
 		 * @return {void}
 		 */
 		renderCategoryList: function(){
 			_.times(this.pictureList.length, function(i){
-				var content = Mustache.render(this.loadTemplate('categoryList'), {
-					key: i,
-					name: this.getCategoryName(i),
-					selected: (this.pictureCategory === i ? ' selected="selected"' : '')
-				});
-
-				var element = jQuery(content)[0];
+				var element = this.renderCategoryOption(i);
 				this.categoryList.appendChild(element);
 			}, this);
 
@@ -353,7 +365,7 @@
 		/**
 		 * Render a picture node with the event listeners
 		 * @param  {string[]} picture
-		 * @return {HTMLElement}
+		 * @return {HTMLAnchorElement}
 		 */
 		renderPicture: function(picture){
 			var content = Mustache.render(this.loadTemplate('picture'), {
