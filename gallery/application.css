@@ -1,0 +1,40 @@
+.modal {
+	display: block;
+}
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.4);
+}
+
+#photo-gallery {
+	text-align: center;
+}
+
+.photoGallery-link {
+	padding: 7px 0;
+}
+.photoGallery-link .image,
+.photoGallery-link .title {
+	display: block;
+	text-align: center;
+}
+
+.photoGallery-link .image img {
+	border-radius: 50%;
+}
+
+.photoGallery-link .title {
+	padding: 5px 0;
+}
+
+.image-wrapper {
+	margin: 0 auto;
+	border: 1px solid #aaa;
+	width: 120px;
+	background: #eee;
+	padding: 5px;
+}
