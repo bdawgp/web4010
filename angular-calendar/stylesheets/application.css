@@ -1,0 +1,48 @@
+.day {
+	display: inline-block;
+	width: 14.27%;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	vertical-align: top;
+}
+
+.day:first-child {
+	border-left: 1px solid #000;
+}
+
+.day.today {
+	background-color: #def;
+}
+
+.day.current {
+	background-color: #bef;
+}
+
+.date {
+	text-align: right;
+}
+
+.dayOfWeek {
+	text-align: center;
+	font-weight: bold;
+	padding: 5px;
+	border-top: 1px solid #fff;
+	border-color: #fff !important;
+}
+
+.dateOfMonth {
+	min-height: 100px;
+	padding: 5px;
+}
+
+.otherMonth {
+	color: #aaa;
+}
+
+.calendarView{
+	text-align: center;
+}
+
+a[ng-click] {
+	cursor: pointer;
+}

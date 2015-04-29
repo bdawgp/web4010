@@ -1,0 +1,26 @@
+{
+  "name": "angular-calendar",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bradynpoulsen/web4010",
+  "authors": [
+    "Bradyn Poulsen <bradyn@bradynpoulsen.com>"
+  ],
+  "main": "javascripts/application.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.15",
+    "jquery": "~2.1.3",
+    "bootstrap": "~3.3.4",
+    "angular-ui-router": "~0.2.13",
+    "lodash": "~3.6.0",
+    "moment": "~2.10.2",
+    "font-awesome": "~4.3.0"
+  }
+}

@@ -1,0 +1,11 @@
+<h2>Event: {{ vm.event.title }}</h2>
+<p>
+	<div>
+		<strong>Title:</strong>
+		<a ng-click="vm.editEvent()">{{ vm.event.title }}</a>
+	</div>
+	<div>
+		<strong>Date:</strong>
+		{{ vm.event.date.format('MMMM D, YYYY') }}
+	</div>
+</p>
